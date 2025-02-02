@@ -3,86 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>SwapCards - Login</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
         body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #000000, #000000);
+            color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
         }
-        .login-container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+
+        .container {
+            width: 90%;
+            max-width: 350px; /* Adjusted for better mobile view */
+            background: rgba(68, 68, 68, 0.8);
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 300px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            align-items: center;
             backdrop-filter: blur(10px);
         }
-        h2 {
-            color: white;
+
+        h1 {
             margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
         }
-        input {
+
+        form {
+            display: flex;
+            flex-direction: column;
             width: 100%;
+        }
+
+        input[type="password"] {
+            margin-bottom: 15px;
             padding: 10px;
-            margin: 10px 0;
             border: none;
             border-radius: 5px;
-            outline: none;
-        }
-        .password {
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
             background: rgba(255, 255, 255, 0.2);
             color: white;
         }
-        .password::placeholder {
+
+        input::placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
+
         button {
-            width: 100%;
             padding: 10px;
-            background: #ff9800;
-            color: white;
             border: none;
             border-radius: 5px;
+            background-color: #6a0dad;
+            color: #ffffff;
             cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #00a44f;
+        }
+
+        .messages {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .messages h3 {
             font-size: 16px;
         }
-        button:hover {
-            background: #e68900;
+
+        .messages h3.success {
+            color: #32cd32;
         }
-        .error {
-            color: red;
-            margin-top: 10px;
+
+        .messages h3.error {
+            color: #ff4500;
         }
     </style>
-</head>
-<body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <input type="password" id="password" class="password" placeholder="Enter Password">
-        <button onclick="checkPassword()">Submit</button>
-        <p id="errorMessage" class="error"></p>
-    </div>
     <script>
-        function checkPassword() {
+        function checkPassword(event) {
+            event.preventDefault();
             let password = document.getElementById("password").value;
-            let errorMessage = document.getElementById("errorMessage");
-            
+            let message = document.getElementById("message");
+
             if (password === "123") {
-                window.location.href = "pop.html"; // Redirect to another page
+                message.innerHTML = "<h3 class='success'>Correct Password! Redirecting...</h3>";
+                setTimeout(() => {
+                    window.location.href = "pop.html";
+                }, 2000);
             } else {
-                errorMessage.textContent = "Incorrect Password";
+                message.innerHTML = "<h3 class='error'>Incorrect Password</h3>";
             }
         }
     </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <form onsubmit="checkPassword(event)">
+            <input type="password" id="password" placeholder="Enter Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <div class="messages" id="message"></div>
+    </div>
 </body>
 </html>
