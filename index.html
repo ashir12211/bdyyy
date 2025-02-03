@@ -3,118 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SwapCards - Login</title>
+    <title>Royal Birthday Page</title>
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #000000, #000000);
-            color: #ffffff;
+            padding: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
             height: 100vh;
+            background: url('https://i.ibb.co/tTWdTVWB/1000292311.jpg') no-repeat center center/cover;
+            font-family: Arial, sans-serif;
         }
-
         .container {
-            width: 90%;
-            max-width: 350px; /* Adjusted for better mobile view */
-            background: rgba(68, 68, 68, 0.8);
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
+            background: rgba(130, 130, 130, 0.4);
             padding: 20px;
-            box-sizing: border-box;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            font-size: 24px;
+            border-radius: 15px;
             text-align: center;
+            opacity: 0;
+            animation: fadeIn 4s forwards;
+            margin-bottom: 150px;
+            box-shadow: 0 6px 10px 0 rgba(33, 33, 33, 0.9), 0 6px 20px 0 rgba(33, 33, 33, 0.9);
         }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        input[type="password"] {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            width: 100%;
-            box-sizing: border-box;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        button {
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #6a0dad;
-            color: #ffffff;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        button:hover {
-            background: #00a44f;
-        }
-
-        .messages {
-            margin-top: 15px;
-            text-align: center;
-        }
-
-        .messages h3 {
-            font-size: 16px;
-        }
-
-        .messages h3.success {
-            color: #32cd32;
-        }
-
-        .messages h3.error {
-            color: #ff4500;
-        }
-    </style>
-    <script>
-        function checkPassword(event) {
-            event.preventDefault();
-            let password = document.getElementById("password").value;
-            let message = document.getElementById("message");
-
-            if (password === "123") {
-                message.innerHTML = "<h3 class='success'>Correct Password! Redirecting...</h3>";
-                setTimeout(() => {
-                    window.location.href = "pop.html";
-                }, 2000);
-            } else {
-                message.innerHTML = "<h3 class='error'>Incorrect Password</h3>";
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-    </script>
+        input {
+            padding: 10px;
+            margin-top: 10px;
+            border: 2px solid rgb(177, 177, 177);
+            border-radius: 5px;
+            background-color: rgb(154, 154, 154);
+        }
+        #message {
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Login</h1>
-        <form onsubmit="checkPassword(event)">
-            <input type="password" id="password" placeholder="Enter Password" required>
-            <button type="submit">Login</button>
-        </form>
-        <div class="messages" id="message"></div>
+        <input type="password" id="password" placeholder="" maxlength="5" oninput="checkPassword()">
+        <p id="message"></p>
     </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            if (password.length === 5) {
+                if (password === 'happy') {
+                    window.location.href = 'pop.html';
+                } else {
+                    document.getElementById('message').innerText = 'Incorrect password';
+                }
+            } else {
+                document.getElementById('message').innerText = '';
+            }
+        }
+    </script>
 </body>
 </html>
