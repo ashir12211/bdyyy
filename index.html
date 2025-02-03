@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Birthday Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100vh;
+            background: url('https://i.ibb.co/tTWdTVWB/1000292311.jpg') no-repeat center center/cover;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: rgba(130, 130, 130, 0.4);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 4s forwards;
+            box-shadow: 0 6px 10px 0 rgba(33, 33, 33, 0.9), 0 6px 20px 0 rgba(33, 33, 33, 0.9);
+            position: absolute;
+            bottom: 15%;
+            width: 50%;
+            max-width: 400px;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        input {
+            margin-top: 10px;
+              padding: 10px;
+              width: 100%;
+              border: 2px solid rgb(177, 177, 177);
+              border-radius: 5px;
+              background-color: rgb(154, 154, 154);
+              box-sizing: border-box;
+          }
+        #message {
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="password" id="password" placeholder="" maxlength="5" oninput="checkPassword()">
+        <p id="message"></p>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            if (password.length === 5) {
+                if (password === 'happy') {
+                    window.location.href = 'pop.html';
+                } else {
+                    document.getElementById('message').innerText = 'wrongaann';
+                }
+            } else {
+                document.getElementById('message').innerText = '';
+            }
+        }
+    </script>
+</body>
+</html>
