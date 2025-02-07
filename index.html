@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Container</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 100vh;
+            background: url('https://i.ibb.co/d4dZ422D/Brown-Vintage-Happy-Birthday-Instagram-Story-2.png') no-repeat center center/cover;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 90%;
+            height: 90vh;
+            max-height: 90%;
+            background: url('https://i.ibb.co/JjFX8CPd/Brown-Vintage-Happy-Birthday-Instagram-Story-1.png') center/cover no-repeat;
+            box-shadow: 0px 5px 30px #000000d3;
+            overflow: hidden;
+            border-radius: 120px;
+        }
+
+        .password-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 60px;
+        }
+
+        .password-input {
+            padding: 10px;
+            width: 150px;
+            border-radius: 5px;
+            background: rgba(255, 235, 162, 0.286);
+            color: #eee;
+            border: #eee;
+        }
+
+        #message {
+            color: #eee;
+            margin-top: 1px;
+            text-align: center;
+        }
+
+        /* Added responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                height: 90vh; /* Increased from 80vh */
+                max-height: 100%; /* Added max-height */
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                height: 90vh; /* Increased from 70vh */
+                max-height: 90%; /* Added max-height */
+            }
+
+            .password-input {
+                padding: 10px;
+                width: 150px;
+                border-radius: 20px;
+                background: rgba(255, 235, 162, 0.286);
+                color: #eee;
+                border: #eee;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="password-container">
+            <input class="password-input" type="password" id="password" placeholder="" maxlength="5" oninput="checkPassword()">
+            <p id="message"></p>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            var encodedPass = "aGFwcHk=";
+
+            if (password.length === 5) {
+                if (btoa(password) === encodedPass) {
+                    window.location.href = 'pop.html';
+                } else {
+                    document.getElementById('message').innerText = 'Incorrect';
+                }
+            } else {
+                document.getElementById('message').innerText = '';
+            }
+        }
+    </script>
+</body>
+</html>
